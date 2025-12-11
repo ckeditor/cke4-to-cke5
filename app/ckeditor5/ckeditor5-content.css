@@ -4,7 +4,11 @@
  */
 :root {
 	--ck-content-color-mention-background: rgba(153, 0, 48, .1);
-	--ck-content-color-mention-text: #990030
+	--ck-content-color-mention-text: #990030;
+}
+
+.ck-content {
+	--ck-content-table-style-spacing: 0;
 }
 
 :root {
