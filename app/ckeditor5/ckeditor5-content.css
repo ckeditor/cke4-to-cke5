@@ -91,13 +91,6 @@
 	white-space: pre-wrap
 }
 
-.ck-content hr {
-	background: #dedede;
-	border: 0;
-	height: 4px;
-	margin: 15px 0
-}
-
 :root {
 	--ck-content-color-image-caption-background: #f7f7f7;
 	--ck-content-color-image-caption-text: #333
