@@ -1,0 +1,11 @@
+{
+  "name": "cke4-to-cke5",
+  "version": "1.0.0",
+  "description": "CKEditor 4 to CKEditor 5 migration project",
+  "scripts": {
+    "serve": "http-server -p 8080 -o"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
