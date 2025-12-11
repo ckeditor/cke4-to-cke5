@@ -7,6 +7,27 @@
 	--ck-content-color-mention-text: #990030
 }
 
+:root {
+	--ck-content-font-family: sans-serif, Arial, Verdana, "Trebuchet MS", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+	--ck-content-font-size: 13px;
+	--ck-content-font-color: #333;
+	--ck-content-line-height: 1.6;
+	--ck-content-word-break: break-word;
+}
+
+/* Slightly higher specificity needed for it to work, so added `.ck`. */
+.ck.ck-content {
+	padding: 20px;
+}
+
+.ck-content {
+	color: var(--ck-content-font-color);
+	font-family: var(--ck-content-font-family);
+	font-size: var(--ck-content-font-size);
+	line-height: var(--ck-content-line-height);
+	word-break: var(--ck-content-word-break)
+}
+
 .ck-content .mention {
 	background: var(--ck-content-color-mention-background);
 	color: var(--ck-content-color-mention-text)
@@ -19,112 +40,55 @@
 }
 
 .ck-content blockquote {
-	border-left: 5px solid #ccc;
 	font-style: italic;
-	margin-left: 0;
-	margin-right: 0;
-	overflow: hidden;
-	padding-left: 1.5em;
-	padding-right: 1.5em
+	font-family: Georgia, Times, "Times New Roman", serif;
+	padding: 2px 0;
+	border-style: solid;
+	border-color: #ccc;
+	border-width: 0;
+
+	/* LTR text styles */
+	padding-left: 20px;
+	padding-right: 8px;
+	border-left-width: 5px;
 }
 
 .ck-content[dir=rtl] blockquote {
-	border-left: 0;
-	border-right: 5px solid #ccc
+	padding-left: 8px;
+	padding-right: 20px;
+	border-right-width: 5px;
+	border-left-width: 0;
+}
+
+.ck-content a {
+	color: #0782C1;
+}
+
+.ck-content ol,
+.ck-content ul,
+.ck-content dl {
+	padding: 0 40px;
+}
+
+.ck-content h1,
+.ck-content h2,
+.ck-content h3,
+.ck-content h4,
+.ck-content h5,
+.ck-content h6 {
+	font-weight: normal;
+	line-height: 1.2;
+}
+
+.ck-content hr {
+	border: 0px;
+	border-top: 1px solid #ccc;
 }
 
 .ck-content pre {
-	background: hsla(0, 0%, 78%, .3);
-	border: 1px solid #c4c4c4;
-	border-radius: 2px;
-	color: #353535;
-	direction: ltr;
-	font-style: normal;
-	min-width: 200px;
-	padding: 1em;
 	tab-size: 4;
 	text-align: left;
 	white-space: pre-wrap
-}
-
-.ck-content pre code {
-	background: unset;
-	border-radius: 0;
-	padding: 0
-}
-
-:root {
-	--ck-content-font-family: Helvetica, Arial, Tahoma, Verdana, Sans-Serif;
-	--ck-content-font-size: medium;
-	--ck-content-font-color: #000;
-	--ck-content-line-height: 1.5;
-	--ck-content-word-break: break-word
-}
-
-.ck-content {
-	color: var(--ck-content-font-color);
-	font-family: var(--ck-content-font-family);
-	font-size: var(--ck-content-font-size);
-	line-height: var(--ck-content-line-height);
-	word-break: var(--ck-content-word-break)
-}
-
-:root {
-	--ck-content-font-size-tiny: 0.7em;
-	--ck-content-font-size-small: 0.85em;
-	--ck-content-font-size-big: 1.4em;
-	--ck-content-font-size-huge: 1.8em
-}
-
-.ck-content .text-tiny {
-	font-size: var(--ck-content-font-size-tiny)
-}
-
-.ck-content .text-small {
-	font-size: var(--ck-content-font-size-small)
-}
-
-.ck-content .text-big {
-	font-size: var(--ck-content-font-size-big)
-}
-
-.ck-content .text-huge {
-	font-size: var(--ck-content-font-size-huge)
-}
-
-:root {
-	--ck-content-highlight-marker-yellow: #fdfd77;
-	--ck-content-highlight-marker-green: #62f962;
-	--ck-content-highlight-marker-pink: #fc7899;
-	--ck-content-highlight-marker-blue: #72ccfd;
-	--ck-content-highlight-pen-red: #e71313;
-	--ck-content-highlight-pen-green: #128a00
-}
-
-.ck-content .marker-yellow {
-	background-color: var(--ck-content-highlight-marker-yellow)
-}
-
-.ck-content .marker-green {
-	background-color: var(--ck-content-highlight-marker-green)
-}
-
-.ck-content .marker-pink {
-	background-color: var(--ck-content-highlight-marker-pink)
-}
-
-.ck-content .marker-blue {
-	background-color: var(--ck-content-highlight-marker-blue)
-}
-
-.ck-content .pen-red {
-	background-color: transparent;
-	color: var(--ck-content-highlight-pen-red)
-}
-
-.ck-content .pen-green {
-	background-color: transparent;
-	color: var(--ck-content-highlight-pen-green)
 }
 
 .ck-content hr {
