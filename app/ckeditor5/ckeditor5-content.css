@@ -497,7 +497,7 @@
 }
 
 .ck-content .table:not(.layout-table) {
-	margin: .9em auto
+	margin: .9em 0;
 }
 
 .ck-content figure.table:not(.layout-table)>table,

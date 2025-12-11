@@ -164,6 +164,7 @@
 			HorizontalLine,
 			MediaEmbed,
 			PageBreak,
+			TextTransformation,
 
 			Indent,
 			IndentBlock,
@@ -188,6 +189,7 @@
 			Strikethrough,
 			Subscript,
 			Superscript,
+			TextPartLanguage,
 
 			ImageInline,
 			ImageInsert,
@@ -221,9 +223,10 @@
 			TableColumnResize,
 			TableProperties,
 			TableToolbar,
-			TextPartLanguage,
-			TextTransformation,
-			PlainTableOutput
+			PlainTableOutput,
+
+			TablePropertiesUIExperimental,
+			TableCellPropertiesUIExperimental
 		} = CKEDITOR;
 
 		ClassicEditor
@@ -243,6 +246,7 @@
 					HorizontalLine,
 					MediaEmbed,
 					PageBreak,
+					TextTransformation,
 
 					Indent,
 					IndentBlock,
@@ -267,6 +271,7 @@
 					Strikethrough,
 					Subscript,
 					Superscript,
+					TextPartLanguage,
 
 					//
 					// NOTE: DO NOT USE ImageBlock plugins when migrating from CKEditor 4's `image` plugin.
@@ -304,9 +309,10 @@
 					TableColumnResize,
 					TableProperties,
 					TableToolbar,
-					TextPartLanguage,
-					TextTransformation,
-					PlainTableOutput
+					PlainTableOutput,
+
+					TablePropertiesUIExperimental,
+					TableCellPropertiesUIExperimental
 				],
 				toolbar: {
 					items: [
@@ -378,7 +384,12 @@
 						'tableProperties',
 						'tableCellProperties',
 						'toggleTableCaption'
-					]
+					],
+					tableProperties: {
+						defaultProperties: {
+							alignment: 'blockLeft'
+						}
+					},
 				},
 				image: {
 					toolbar: ['imageTextAlternative', '|', 'imageStyle:inline', 'imageStyle:alignLeft', 'imageStyle:alignRight', '|', 'resizeImage'],
@@ -400,6 +411,10 @@
 						{ model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
 					]
 				},
+				experimentalFlags: {
+					useExtendedTableBlockAlignment: true,
+					upcastTableBorderZeroAttributes: true
+				}
 			})
 			.catch(error => {
 				console.error(error);
