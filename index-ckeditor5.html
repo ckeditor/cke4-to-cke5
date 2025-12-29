@@ -1456,6 +1456,26 @@
 			.then( editor => {
 				window.editor = editor;
 
+				// Customize clipboard output.
+				editor.editing.view.document.on( 'clipboardOutput',
+					( evt, data ) => {
+						if ( data.method === 'dragstart' ) {
+							return;
+						}
+
+						console.log( 'Original clipboard output called. Current data:', data.dataTransfer.getData( 'text/html' ) );
+
+						data.dataTransfer.setData(
+							'text/html',
+							'<p>Custom clipboard output!</p>'
+							);
+
+						const currentClipboardData = data.dataTransfer.getData( 'text/html' );
+
+						console.log( 'Clipboard output called. Current data:', currentClipboardData );
+					}, { priority: 'lowest' }
+				);
+
 				const iframe = document.querySelector( '#iframe' );
 				const INVISIBLE_CHARS = /[\u2000-\u200F\u202F\u205F\u3000\uFEFF]/g;
 
