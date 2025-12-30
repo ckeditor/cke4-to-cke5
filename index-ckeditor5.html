@@ -5,6 +5,7 @@
 	<title>CKEditor 5 Demo</title>
 	<link rel="stylesheet" href="vendor/ckeditor5/ckeditor5-editor.css">
 	<link rel="stylesheet" href="app/ckeditor5/ckeditor5-content.css">
+	<link rel="stylesheet" href="app/ckeditor5/ckeditor5-content-overrides.css">
 	<style>
 		body {
 			font-family: Arial, sans-serif;
@@ -17,6 +18,60 @@
 <body>
 	<h1>CKEditor 5 Demo</h1>
 	<div id="editor">
+<p>&nbsp;</p>
+
+<table class="table" style="width:500px">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="1" cellpadding="1" cellspacing="1" class="table" style="width:500px">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="0" cellpadding="1" cellspacing="1" class="table" style="width:500px">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
 
 <h2 style="line-height:75px; text-align:center"><img alt="Bilancino Hotel logo" src="/assets/bilancino-logo.png" style="float:right; height:75px; width:75px" />The Flavorful Tuscany Meetup</h2>
 
@@ -393,6 +448,7 @@
 							alignment: 'blockLeft'
 						}
 					},
+					showHiddenBorders: true
 				},
 				image: {
 					toolbar: ['imageTextAlternative', '|', 'imageStyle:inline', 'imageStyle:alignLeft', 'imageStyle:alignRight', '|', 'resizeImage'],

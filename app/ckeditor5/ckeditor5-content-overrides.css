@@ -1,0 +1,117 @@
+/**
+ * @license Copyright (c) 2003-2025, CKSource Holding sp. z o.o. All rights reserved.
+ * For licensing, see LICENSE.md or https://ckeditor.com/legal/ckeditor-licensing-options
+ */
+
+
+/* Override CKEditor 5 default table border styles to match CKEditor 4 dotted borders for tables without layout-table class. */
+.ck-content figure.table:not(.layout-table)>table,
+.ck-content table.table:not(.layout-table) {
+	/* border-color: revert; */
+    /* border-style: solid; */
+    border-style: dotted;
+    border-width: 1px;
+    border-collapse: revert;
+	border-spacing: revert-layer;
+}
+
+/* Reset border-collapse and border-spacing to default browser values for tables without layout-table class. */
+.ck-content figure.table:not(.layout-table)>table,
+.ck-content table.table:not(.layout-table) {
+    border-collapse: revert;
+	border-spacing: revert-layer;
+}
+
+/* Fallback for CKEditor4 content with cellspacing and cellpadding attributes - for further research. */
+.ck-content figure.table:not(.layout-table)>table[cellspacing][cellpadding],
+.ck-content table.table:not(.layout-table)[cellspacing][cellpadding] {
+	/* border-color: revert; */
+    /* border-style: solid; */
+    border-style: dotted;
+    border-width: 1px;
+    border-collapse: revert;
+	border-spacing: revert-layer;
+}
+
+/*
+* Support for cellspacing and cellpadding attributes.
+* Note: attr() function has limited browser support (not supported in Firefox as of June 2024).
+*/
+/*
+.ck-content figure.table:not(.layout-table)>table[cellspacing]:not([cellspacing="0"]) {
+	border-spacing: attr(cellspacing px);
+}
+
+.ck-content figure.table:not(.layout-table)>table[cellpadding]:not([cellpadding="0"]) {
+    --ck-table-cellpadding: attr(cellpadding px);
+
+    >tbody>tr>td,
+    >tbody>tr>th,
+    >thead>tr>td,
+    >thead>tr>th {
+        padding: var(--ck-table-cellpadding, initial);
+    }
+}
+*/
+
+.ck-content figure.table:not(.layout-table)>table[style*="border-width:0px"],
+.ck-content figure.table:not(.layout-table)>table:not([border]),
+.ck-content figure.table:not(.layout-table)>table[border="0"] {
+	/* border-color: revert; */
+    border-style: dotted;
+    border-width: 1px;
+}
+
+.ck-content figure.table:not(.layout-table)>table[border]:not([border="0"]):not([style*="border-width:0px"]) {
+    border-style: solid;
+}
+
+/* Reset default padding added by CKEditor 5 */
+.ck-content figure.table:not(.layout-table)>table>tbody>tr>td,
+.ck-content figure.table:not(.layout-table)>table>tbody>tr>th,
+.ck-content figure.table:not(.layout-table)>table>thead>tr>td,
+.ck-content figure.table:not(.layout-table)>table>thead>tr>th,
+.ck-content table.table:not(.layout-table)>tbody>tr>td,
+.ck-content table.table:not(.layout-table)>tbody>tr>th,
+.ck-content table.table:not(.layout-table)>thead>tr>td,
+.ck-content table.table:not(.layout-table)>thead>tr>th {
+	padding: initial;
+}
+
+/* When border is set to 0 on table, on all cells is set border-style:none. So below style wont help. */
+.ck-content figure.table:not(.layout-table)>table[style*="border-width:0px"]>tbody>tr>td,
+.ck-content figure.table:not(.layout-table)>table:not([border])>tbody>tr>td,
+.ck-content figure.table:not(.layout-table)>table[border="0"]>tbody>tr>td,
+.ck-content figure.table:not(.layout-table)>table[style*="border-width:0px"]>tbody>tr>th,
+.ck-content figure.table:not(.layout-table)>table:not([border])>tbody>tr>th,
+.ck-content figure.table:not(.layout-table)>table[border="0"]>tbody>tr>th,
+.ck-content figure.table:not(.layout-table)>table[style*="border-width:0px"]>thead>tr>td,
+.ck-content figure.table:not(.layout-table)>table:not([border])>thead>tr>td,
+.ck-content figure.table:not(.layout-table)>table[border="0"]>thead>tr>td,
+.ck-content figure.table:not(.layout-table)>table[style*="border-width:0px"]>thead>tr>th,
+.ck-content figure.table:not(.layout-table)>table:not([border])>thead>tr>th,
+.ck-content figure.table:not(.layout-table)>table[border="0"]>thead>tr>th,
+.ck-content table.table:not(.layout-table)[style*="border-width:0px"]>tbody>tr>td,
+.ck-content table.table:not(.layout-table):not([border])>tbody>tr>td,
+.ck-content table.table:not(.layout-table)[border="0"]>tbody>tr>td,
+.ck-content table.table:not(.layout-table)[style*="border-width:0px"]>tbody>tr>th,
+.ck-content table.table:not(.layout-table):not([border])>tbody>tr>th,
+.ck-content table.table:not(.layout-table)[border="0"]>tbody>tr>th,
+.ck-content table.table:not(.layout-table)[style*="border-width:0px"]>thead>tr>td,
+.ck-content table.table:not(.layout-table):not([border])>thead>tr>td,
+.ck-content table.table:not(.layout-table)[border="0"]>thead>tr>td,
+.ck-content table.table:not(.layout-table)[style*="border-width:0px"]>thead>tr>th,
+.ck-content table.table:not(.layout-table):not([border])>thead>tr>th,
+.ck-content table.table:not(.layout-table)[border="0"]>thead>tr>th {
+    border-style: dotted;
+}
+
+/* Override CKEditor 5 table helper lines style. */
+:where(.ck.ck-editor__editable.ck-table-show-hidden-borders .ck-widget.table) {
+    --ck-table-border-none-helper-line-style: dotted;
+}
+
+/* Additional fallback for CKEditor4 content with inline styles setting border:none or border-style:none */
+.ck-widget.table table[style*="border:none"], .ck-widget.table table[style*="border-style:none"] {
+    outline-style: dotted;
+}
