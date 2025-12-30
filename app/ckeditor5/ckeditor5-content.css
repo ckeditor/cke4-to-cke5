@@ -490,19 +490,22 @@
 
 .ck-content figure.table:not(.layout-table)>table {
 	height: 100%;
-	width: 100%
+	width: 100%;
+
+	/* Set defaults. */
+	border-width: 1px;
 }
 
 .ck-content .table:not(.layout-table) {
 	margin: .9em 0;
 }
-
-.ck-content figure.table:not(.layout-table)>table,
+/* Commented out to disable default borders for tables. */
+/* .ck-content figure.table:not(.layout-table)>table,
 .ck-content table.table:not(.layout-table) {
 	border: 1px double #b3b3b3;
 	border-collapse: collapse;
 	border-spacing: 0
-}
+} */
 
 .ck-content figure.table:not(.layout-table)>table>tbody>tr>th,
 .ck-content figure.table:not(.layout-table)>table>thead>tr>th,
@@ -520,9 +523,7 @@
 .ck-content table.table:not(.layout-table)>tbody>tr>th,
 .ck-content table.table:not(.layout-table)>thead>tr>td,
 .ck-content table.table:not(.layout-table)>thead>tr>th {
-	border: 1px solid #bfbfbf;
 	min-width: 2em;
-	padding: .4em
 }
 
 .ck-content figure.table:not(.layout-table)>table>tbody>tr>td>p:first-of-type,
@@ -634,3 +635,63 @@
 	margin-left: auto;
 	margin-right: 0
 }
+
+
+/* Fix for border set on nested editable. First the current style is reverted, than set again by excluding table cells. For table cells the border is set to dotted to match CKEditor 4 appearance. */
+.ck .ck-editor__nested-editable {
+    border: revert-layer;
+}
+
+.ck .ck-editor__nested-editable:not(td, th) {
+    border: 1px solid transparent;
+}
+
+.ck .ck-editor__nested-editable:where(td, th) {
+    border-width: 1px;
+	border-style: dotted;
+	/* border-color: initial; */
+	border-color: #D3D3E3; /* Same as in CKEditor 4. */
+}
+
+/* Override CKEditor 5 table border style for tables without borders (border:none, border-width:0, border=0). */
+.ck-content figure.table:not(.layout-table)>table[style*="border-width:0px"],
+.ck-content figure.table:not(.layout-table)>table:not([border]),
+.ck-content figure.table:not(.layout-table)>table[border="0"] {
+	/* border-color: revert; */
+	border-color: #D3D3E3; /* Same as in CKEditor 4. */
+    border-style: dotted;
+    border-width: 1px;
+}
+
+/* Override CKEditor 5 table helper lines style. */
+:where(.ck.ck-editor__editable.ck-table-show-hidden-borders .ck-widget.table) {
+    --ck-table-border-none-helper-line-style: dotted;
+	--ck-table-border-none-helper-line-color: #D3D3E3; /* Same as in CKEditor 4. */
+}
+
+/* Additional fallback for CKEditor4 content with inline styles setting border:none or border-style:none */
+.ck-widget.table table[style*="border:none"], .ck-widget.table table[style*="border-style:none"] {
+    outline-style: dotted;
+}
+
+.ck-content figure.table:not(.layout-table)>table[border]:not([border="0"]):not([style*="border-width:0px"]) {
+    border-style: solid;
+
+	> thead,
+	> tbody {
+		> tr {
+			> th,
+			> td {
+				border-style: solid;
+				border-color: initial;
+			}
+		}
+	}
+}
+
+/*
+TODO:
+
+What to do with `border-collapse` - CKE4 by default uses `separate` but CKE5 `collapse`. Maybe we should set `separate` here as well?
+But if we do `separate` then we need to handle `border-spacing` as well to match CKE4 appearance (UI?).
+*/
