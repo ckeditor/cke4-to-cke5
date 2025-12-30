@@ -18,6 +18,59 @@
 	<h1>CKEditor 5 Demo</h1>
 	<div id="editor">
 
+<p>&nbsp;</p>
+<table class="table" style="width:500px">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="1" cellpadding="1" cellspacing="1" class="table" style="width:500px">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="0" cellpadding="1" cellspacing="1" class="table" style="width:500px">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
 <h2 style="line-height:75px; text-align:center"><img alt="Bilancino Hotel logo" src="/assets/bilancino-logo.png" style="float:right; height:75px; width:75px" />The Flavorful Tuscany Meetup</h2>
 
 <h3 style="clear:both; margin-left:-2em; margin-top:-2em; text-align:center"><span style="color:#007ac9"><strong>Welcome letter</strong></span></h3>
@@ -144,6 +197,11 @@
 
 <p>Nullam nisl tellus, fermentum vitae finibus in, ultricies nec nisl. Phasellus eu risus non lorem imperdiet iaculis. Aliquam eget ligula mi. Duis quis lacus id libero bibendum imperdiet. Donec ut suscipit risus, sit amet pulvinar nunc. Praesent faucibus lectus et dignissim faucibus. Aliquam vulputate blandit nunc ac euismod. Aliquam viverra vitae nisi et lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer quis efficitur elit. Etiam maximus id leo non volutpat. In lobortis tempor orci sed dictum.</p>
 
+	</div>
+
+	<div>
+		<h2>HTML output (iframe)</h2>
+		<div id="output" class="ck-content"></div>
 	</div>
 
 	<script src="vendor/ckeditor5/ckeditor5.umd.js"></script>
@@ -390,9 +448,15 @@
 							useInlineStyles: false
 						},
 						defaultProperties: {
-							alignment: 'blockLeft'
+							alignment: 'blockLeft',
+							borderStyle: 'dashed'
 						}
 					},
+					tableCellProperties: {
+						defaultProperties: {
+							borderStyle: 'dashed'
+						}
+					}
 				},
 				image: {
 					toolbar: ['imageTextAlternative', '|', 'imageStyle:inline', 'imageStyle:alignLeft', 'imageStyle:alignRight', '|', 'resizeImage'],
@@ -419,6 +483,18 @@
 					upcastTableBorderZeroAttributes: true
 				}
 			})
+			.then( editor => {
+				const output = document.querySelector( '#output' );
+				const INVISIBLE_CHARS = /[\u2000-\u200F\u202F\u205F\u3000\uFEFF]/g;
+
+				editor.model.document.on( 'change', () => {
+					output.insertAdjacentHTML( 'beforeend', ( editor.getData() ).replace(INVISIBLE_CHARS, '') );
+				} );
+
+				setTimeout( () => {
+					output.insertAdjacentHTML( 'beforeend', ( editor.getData() ).replace(INVISIBLE_CHARS, '') );
+				}, 500 );
+			} )
 			.catch(error => {
 				console.error(error);
 			});

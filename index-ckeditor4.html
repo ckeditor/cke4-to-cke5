@@ -19,6 +19,59 @@
 <body>
 	<h1>CKEditor 4 Demo</h1>
 	<textarea id="editor" name="editor">
+<p>&nbsp;</p>
+<table class="table" style="width:500px">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="1" cellpadding="1" cellspacing="1" class="table" style="width:500px">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<table border="0" cellpadding="1" cellspacing="1" class="table" style="width:500px">
+	<tbody>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td>&nbsp;</td>
+		</tr>
+	</tbody>
+</table>
+
+<p>&nbsp;</p>
 
 <h2 style="line-height:75px; text-align:center"><img alt="Bilancino Hotel logo" src="/assets/bilancino-logo.png" style="float:right; height:75px; width:75px" />The Flavorful Tuscany Meetup</h2>
 
@@ -148,10 +201,25 @@
 
 	</textarea>
 
+	<div>
+		<h2>HTML output (iframe)</h2>
+		<div id="output"></div>
+	</div>
+
 	<script>
 		CKEDITOR.config.customConfig = '/app/ckeditor4/config.js';
-		CKEDITOR.replace('editor', {
+		const editor = CKEDITOR.replace('editor', {
 			contentsCss: '/app/ckeditor4/contents.css'
+		});
+
+		const output = document.querySelector( '#output' );
+
+		editor.on('dataReady', ( evt ) => {
+			output.insertAdjacentHTML("beforeend", evt.editor.getData());
+		});
+
+		editor.on('change', ( evt ) => {
+			output.insertAdjacentHTML("beforeend", evt.editor.getData());
 		});
 	</script>
 </body>
