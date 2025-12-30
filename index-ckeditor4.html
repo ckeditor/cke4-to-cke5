@@ -219,6 +219,7 @@
 		});
 
 		editor.on('change', ( evt ) => {
+			output.innerHTML = '';
 			output.insertAdjacentHTML("beforeend", evt.editor.getData());
 		});
 	</script>

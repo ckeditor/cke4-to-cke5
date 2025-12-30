@@ -488,6 +488,7 @@
 				const INVISIBLE_CHARS = /[\u2000-\u200F\u202F\u205F\u3000\uFEFF]/g;
 
 				editor.model.document.on( 'change', () => {
+					output.innerHTML = '';
 					output.insertAdjacentHTML( 'beforeend', ( editor.getData() ).replace(INVISIBLE_CHARS, '') );
 				} );
 
