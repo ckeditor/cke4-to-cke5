@@ -75,7 +75,7 @@
 .ck-content table.table:not(.layout-table)>tbody>tr>th,
 .ck-content table.table:not(.layout-table)>thead>tr>td,
 .ck-content table.table:not(.layout-table)>thead>tr>th {
-	padding: initial;
+	padding: revert-layer;
 }
 
 /* When border is set to 0 on table, on all cells is set border-style:none. So below style wont help. */
