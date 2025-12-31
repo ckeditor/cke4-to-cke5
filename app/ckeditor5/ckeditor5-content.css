@@ -636,8 +636,8 @@
 	margin-right: 0
 }
 
-
-/* Fix for border set on nested editable. First the current style is reverted, than set again by excluding table cells. For table cells the border is set to dotted to match CKEditor 4 appearance. */
+/* Fix for border set on nested editable. First the current style is reverted, than set again by excluding table cells.
+For table cells the border is set to dotted to match CKEditor 4 appearance. */
 .ck .ck-editor__nested-editable {
     border: revert-layer;
 }
@@ -649,7 +649,6 @@
 .ck .ck-editor__nested-editable:where(td, th) {
     border-width: 1px;
 	border-style: dotted;
-	/* border-color: initial; */
 	border-color: #D3D3E3; /* Same as in CKEditor 4. */
 }
 
