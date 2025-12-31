@@ -202,10 +202,26 @@
 
 	</textarea>
 
+	<div>
+		<h2>HTML output</h2>
+		<div id="output" class="ck-content"></div>
+	</div>
+
 	<script>
 		CKEDITOR.config.customConfig = '/app/ckeditor4/config.js';
-		CKEDITOR.replace('editor', {
+		const editor = CKEDITOR.replace('editor', {
 			contentsCss: '/app/ckeditor4/contents.css'
+		});
+
+		const output = document.querySelector( '#output' );
+
+		editor.on('dataReady', ( evt ) => {
+			output.insertAdjacentHTML("beforeend", evt.editor.getData());
+		});
+
+		editor.on('change', ( evt ) => {
+			output.innerHTML = '';
+			output.insertAdjacentHTML("beforeend", evt.editor.getData());
 		});
 	</script>
 </body>

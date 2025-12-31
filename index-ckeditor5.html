@@ -201,6 +201,11 @@
 
 	</div>
 
+	<div>
+		<h2>HTML output</h2>
+		<div id="output" class="ck-content"></div>
+	</div>
+
 	<script src="vendor/ckeditor5/ckeditor5.umd.js"></script>
 	<script>
 		const {
@@ -475,6 +480,19 @@
 					upcastTableBorderZeroAttributes: true
 				}
 			})
+			.then( editor => {
+				const output = document.querySelector( '#output' );
+				const INVISIBLE_CHARS = /[\u2000-\u200F\u202F\u205F\u3000\uFEFF]/g;
+
+				editor.model.document.on( 'change', () => {
+					output.innerHTML = '';
+					output.insertAdjacentHTML( 'beforeend', ( editor.getData() ).replace(INVISIBLE_CHARS, '') );
+				} );
+
+				setTimeout( () => {
+					output.insertAdjacentHTML( 'beforeend', ( editor.getData() ).replace(INVISIBLE_CHARS, '') );
+				}, 500 );
+			} )
 			.catch(error => {
 				console.error(error);
 			});
