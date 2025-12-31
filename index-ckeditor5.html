@@ -13,10 +13,29 @@
 			margin: 50px auto;
 			padding: 20px;
 		}
+
+		fieldset {
+			margin: 0 0 2em 0;
+			
+		}
 	</style>
 </head>
 <body>
+	<style id="borderCollapse-stylesheet">
+		table,
+		th,
+		td {
+			border-collapse: collapse !important;
+		}
+	</style>
 	<h1>CKEditor 5 Demo</h1>
+	<fieldset>
+		<legend>Options</legend>
+		<label>
+			<input type="checkbox" id="borderCollapse-css" />
+			<code>Border collapse: collapse</code>
+		</label>
+	</fieldset>
 	<div id="editor">
 <p>&nbsp;</p>
 
@@ -450,7 +469,13 @@
 							useInlineStyles: false
 						},
 						defaultProperties: {
-							alignment: 'blockLeft'
+							alignment: 'blockLeft',
+							borderStyle: 'dotted'
+						}
+					},
+					tableCellProperties: {
+						defaultProperties: {
+							borderStyle: 'dotted'
 						}
 					},
 					showHiddenBorders: true
@@ -496,6 +521,18 @@
 			.catch(error => {
 				console.error(error);
 			});
+
+
+		const borderCollapseCssCheckbox = document.querySelector( '#borderCollapse-css' );
+		const borderCollapseStyleSheet = document.querySelector( '#borderCollapse-stylesheet' );
+
+		borderCollapseStyleSheet.disabled = true;
+
+		borderCollapseCssCheckbox.addEventListener( 'change', () => {
+			borderCollapseStyleSheet.disabled = !borderCollapseCssCheckbox.checked;
+		} );
+
 	</script>
+
 </body>
 </html>
