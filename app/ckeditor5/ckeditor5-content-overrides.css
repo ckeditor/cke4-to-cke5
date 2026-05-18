@@ -226,3 +226,8 @@
 		}
 	}
 }
+
+.ck-content code {
+	padding: initial;
+	background-color: initial;
+}

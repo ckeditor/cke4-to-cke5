@@ -145,6 +145,132 @@
 
 		<p>Nullam nisl tellus, fermentum vitae finibus in, ultricies nec nisl. Phasellus eu risus non lorem imperdiet iaculis. Aliquam eget ligula mi. Duis quis lacus id libero bibendum imperdiet. Donec ut suscipit risus, sit amet pulvinar nunc. Praesent faucibus lectus et dignissim faucibus. Aliquam vulputate blandit nunc ac euismod. Aliquam viverra vitae nisi et lacinia. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer quis efficitur elit. Etiam maximus id leo non volutpat. In lobortis tempor orci sed dictum.</p>
 
+		<hr />
+
+		<h1>Headings</h1>
+
+		<h1>Heading 1</h1>
+		<h2>Heading 2</h2>
+		<h3>Heading 3</h3>
+		<h4>Heading 4</h4>
+		<h5>Heading 5</h5>
+		<h6>Heading 6</h6>
+
+		<hr />
+
+		<h1>Lists</h1>
+
+		<h2>Unordered</h2>
+
+		<ul>
+			<li>First item</li>
+			<li>Second item</li>
+			<li>Third item</li>
+		</ul>
+
+		<h2>Ordered</h2>
+
+		<ol>
+			<li>Step one</li>
+			<li>Step two</li>
+			<li>Step three</li>
+		</ol>
+
+		<h2>Nested (mixed)</h2>
+
+		<ol>
+			<li>Outer ordered one
+				<ul>
+					<li>Nested unordered</li>
+					<li>Another nested</li>
+				</ul>
+			</li>
+			<li>Outer ordered two
+				<ol>
+					<li>Nested ordered first</li>
+					<li>Nested ordered second
+						<ul>
+							<li>Deep nested (third level)</li>
+						</ul>
+					</li>
+				</ol>
+			</li>
+		</ol>
+
+		<h2>Custom list-style-type</h2>
+
+		<ol style="list-style-type:upper-roman">
+			<li>Item I</li>
+			<li>Item II</li>
+			<li>Item III</li>
+		</ol>
+
+		<ul style="list-style-type:square">
+			<li>Square bullet</li>
+			<li>Another square bullet</li>
+		</ul>
+
+		<hr />
+
+		<h1>Images</h1>
+
+		<h2>Inline / unaligned</h2>
+
+		<p>Inline logo <img alt="Bilancino Hotel logo" src="/assets/bilancino-logo.png" style="height:50px; width:50px" /> inside a paragraph.</p>
+
+		<h2>Float left</h2>
+
+		<p><img alt="Logo" src="/assets/bilancino-logo.png" style="float:left; height:60px; width:60px; margin-right:10px" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac porttitor diam. Proin consectetur, enim a mollis molestie.</p>
+
+		<h2>Float right</h2>
+
+		<p><img alt="Logo" src="/assets/bilancino-logo.png" style="float:right; height:60px; width:60px; margin-left:10px" />Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac porttitor diam. Proin consectetur, enim a mollis molestie.</p>
+
+		<hr />
+
+		<h1>Links</h1>
+
+		<p>External link: <a href="https://ckeditor.com">CKEditor</a>.</p>
+
+		<p>New-tab link: <a href="https://ckeditor.com" target="_blank">CKEditor (opens in a new tab)</a>.</p>
+
+		<p>With rel: <a href="https://ckeditor.com" rel="noopener noreferrer" target="_blank">CKEditor (noopener, new tab)</a>.</p>
+
+		<p>Custom class: <a class="custom-link" href="https://ckeditor.com">Custom-class link</a>.</p>
+
+		<p>Mailto: <a href="mailto:hello@example.com">hello@example.com</a>.</p>
+
+		<p>In-page anchor: <a href="#headings">Jump to Headings</a>.</p>
+
+		<hr />
+
+		<h1>Code &amp; preformatted text</h1>
+
+		<p>Inline <code>code()</code> inside a paragraph.</p>
+
+		<pre>function greet(name) {
+	return `Hello, ${name}`;
+}</pre>
+
+		<pre><code>const wrapped = pre + code;
+console.log(wrapped);</code></pre>
+
+		<hr />
+
+		<h1>Legacy HTML attributes</h1>
+
+		<p align="center">Paragraph with <code>align="center"</code> (deprecated).</p>
+
+		<p align="right">Paragraph with <code>align="right"</code> (deprecated).</p>
+
+		<p>Text with <strike>strike</strike> and <s>s</s> tags.</p>
+
+		<p>Text with <big>big</big> and <small>small</small> sizes (deprecated).</p>
+
+		<center>Centered text using deprecated &lt;center&gt;.</center>
+
+		<p><font color="#990030" face="Courier New" size="4">Text inside &lt;font&gt; (deprecated): color, face, size.</font></p>
+
 	</div>
 
 	<script type="importmap">
