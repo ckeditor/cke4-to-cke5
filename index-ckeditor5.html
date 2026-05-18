@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<title>CKEditor 5 Demo</title>
-	<link rel="stylesheet" href="vendor/ckeditor5/ckeditor5-editor.css">
+	<link rel="stylesheet" href="node_modules/ckeditor5/dist/browser/ckeditor5-editor.css">
 	<link rel="stylesheet" href="app/ckeditor5/ckeditor5-content.css">
 	<style>
 		body {
@@ -146,9 +146,16 @@
 
 	</div>
 
-	<script src="vendor/ckeditor5/ckeditor5.umd.js"></script>
-	<script>
-		const {
+	<script type="importmap">
+		{
+			"imports": {
+				"ckeditor5": "./node_modules/ckeditor5/dist/browser/ckeditor5.js",
+				"ckeditor5/": "./node_modules/ckeditor5/dist/browser/"
+			}
+		}
+	</script>
+	<script type="module">
+		import {
 			ClassicEditor,
 
 			Paragraph,
@@ -223,11 +230,8 @@
 			TableColumnResize,
 			TableProperties,
 			TableToolbar,
-			PlainTableOutput,
-
-			TablePropertiesUIExperimental,
-			TableCellPropertiesUIExperimental
-		} = CKEDITOR;
+			PlainTableOutput
+		} from 'ckeditor5';
 
 		ClassicEditor
 			.create(document.querySelector('#editor'), {
@@ -309,10 +313,7 @@
 					TableColumnResize,
 					TableProperties,
 					TableToolbar,
-					PlainTableOutput,
-
-					TablePropertiesUIExperimental,
-					TableCellPropertiesUIExperimental
+					PlainTableOutput
 				],
 				toolbar: {
 					items: [
@@ -413,10 +414,6 @@
 						{ model: 'heading5', view: 'h5', title: 'Heading 5', class: 'ck-heading_heading5' },
 						{ model: 'heading6', view: 'h6', title: 'Heading 6', class: 'ck-heading_heading6' }
 					]
-				},
-				experimentalFlags: {
-					useExtendedTableBlockAlignment: true,
-					upcastTableBorderZeroAttributes: true
 				}
 			})
 			.catch(error => {
