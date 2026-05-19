@@ -7,12 +7,16 @@
  * CKEditor 4 look-and-feel overrides for CKEditor 5.
  *
  * Loaded AFTER vendor `ckeditor5-content.css`. Each section targets
- * a category where CKE5 defaults visibly differ from CKE4 and
- * rewrites just those rules.
+ * one element category where CKE5 defaults visibly differ from CKE4
+ * and rewrites just those rules.
  * ============================================================ */
 
 
-/* ---------- Content typography ---------------------------------- */
+/* ============================================================
+ * Typography
+ * ============================================================ */
+
+/* Replace CKE5's `Helvetica/Arial/medium/#000` content defaults with the CKE4 set. */
 :root {
 	--ck-content-font-family: sans-serif, Arial, Verdana, "Trebuchet MS", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 	--ck-content-font-size: 13px;
@@ -21,20 +25,22 @@
 	--ck-content-word-break: break-word;
 }
 
-/* CKE4 did not pad aligned tables; suppress CKE5's table-style spacing. */
+/* Suppress CKE5's outer spacing around aligned tables (CKE4 had none). */
 .ck-content {
 	--ck-content-table-style-spacing: 0;
 }
 
-/* `.ck` adds the specificity needed to beat vendor `.ck-content`. */
+/* Add CKE4-style padding to the editing area (`.ck` raises specificity above vendor). */
 .ck.ck-content {
 	padding: 20px;
 }
 
 
-/* ---------- Block elements -------------------------------------- */
+/* ============================================================
+ * Blockquote
+ * ============================================================ */
 
-/* CKE4 used a serif blockquote with asymmetric padding. */
+/* Restore CKE4's serif blockquote with asymmetric left/right padding. */
 .ck-content blockquote {
 	font-style: italic;
 	font-family: Georgia, Times, "Times New Roman", serif;
@@ -47,6 +53,7 @@
 	border-left-width: 5px;
 }
 
+/* RTL mirror of the rule above. */
 .ck-content[dir=rtl] blockquote {
 	padding-left: 8px;
 	padding-right: 20px;
@@ -54,19 +61,34 @@
 	border-left-width: 0;
 }
 
+
+/* ============================================================
+ * Links
+ * ============================================================ */
+
 /* CKE4 default link color. */
 .ck-content a {
 	color: #0782C1;
 }
 
-/* CKE4 default list padding. */
+
+/* ============================================================
+ * Lists
+ * ============================================================ */
+
+/* CKE4 default left-padding on lists (CKE5 inherits user-agent values). */
 .ck-content ol,
 .ck-content ul,
 .ck-content dl {
 	padding: 0 40px;
 }
 
-/* CKE4 used browser-default heading sizes with normal weight. */
+
+/* ============================================================
+ * Headings
+ * ============================================================ */
+
+/* CKE4 rendered headings with normal weight and a tighter line-height. */
 .ck-content h1,
 .ck-content h2,
 .ck-content h3,
@@ -77,7 +99,12 @@
 	line-height: 1.2;
 }
 
-/* CKE4 rendered <hr> as a thin line, not CKE5's chunky 4px bar. */
+
+/* ============================================================
+ * Horizontal rule
+ * ============================================================ */
+
+/* CKE4 rendered <hr> as a thin line; CKE5 ships a chunky 4 px bar. */
 .ck-content hr {
 	background: transparent;
 	display: block;
@@ -87,11 +114,27 @@
 	border-top: 1px solid #ccc;
 }
 
-/* CKE4 default: unaligned images sit at the left margin, not auto-centered. */
+
+/* ============================================================
+ * Images
+ * ============================================================ */
+
+/* CKE4 left-aligned unaligned images; CKE5 auto-centers them. */
 .ck-content .image {
 	margin-left: 0;
 	margin-right: auto;
 	text-align: left;
+}
+
+
+/* ============================================================
+ * Code and preformatted text
+ * ============================================================ */
+
+/* CKE4 did not style inline <code>; strip CKE5's gray-pill background and padding. */
+.ck-content code {
+	padding: initial;
+	background-color: initial;
 }
 
 /* CKE4 left <pre> mostly unstyled; revert CKE5's box-around-pre. */
@@ -106,20 +149,28 @@
 }
 
 
-/* ---------- Tables ---------------------------------------------- */
+/* ============================================================
+ * Tables
+ * ============================================================ */
 
-/* CKE4 default: tables sit at the left margin, not auto-centered. */
+/* --- Outer alignment ------------------------------------------- */
+
+/* Default unaligned tables to the left margin (CKE5 centers them). */
 .ck-content .table:not(.layout-table) {
 	margin-left: 0;
 }
 
-/* Override the above style for tables with the "align-center" style, which CKE4 used to center tables. */
+/* Restore auto-centering only when the user explicitly picks "align center". */
 .ck-content .table:not(.layout-table).table-style-align-center {
 	margin-left: auto;
 }
 
-/* Nested editable border fix: revert CKE5 default, then re-apply with
- * cells excluded; cells get CKE4-style dotted borders. */
+
+/* --- Nested editable borders ----------------------------------- */
+
+/* Revert CKE5's default 1 px nested-editable border so it can be re-applied with
+ * cells excluded, then re-add transparent borders for non-cell editables and
+ * CKE4-style dotted helper borders for table cells. */
 .ck .ck-editor__nested-editable {
 	border: revert-layer;
 }
@@ -134,7 +185,11 @@
 	border-color: #D3D3E3; /* Same as in CKEditor 4. */
 }
 
-/* Revert CKE5's opinionated table/cell borders for non-layout tables. */
+
+/* --- Table & cell border resets -------------------------------- */
+
+/* Strip CKE5's opinionated `1px double #b3b3b3` table outline and let the
+ * inline `border-width`/attribute-driven rules below decide the final look. */
 .ck-content figure.table:not(.layout-table) > table,
 .ck-content table.table:not(.layout-table) {
 	border-color: revert;
@@ -144,6 +199,8 @@
 	border-spacing: revert-layer;
 }
 
+/* Same idea for individual cells: drop CKE5's `1px solid #bfbfbf` and padding,
+ * leaving width at 1 px so the attribute-driven rules below can colour them in. */
 .ck-content figure.table:not(.layout-table) > table,
 .ck-content table.table:not(.layout-table) {
 	> thead > tr,
@@ -152,30 +209,33 @@
 		> td {
 			border: revert-layer;
 			border-width: 1px;
-			/* Reset default padding added by CKEditor 5. */
 			padding: revert-layer;
 		}
 	}
 }
 
-/* Reset border-collapse and border-spacing to browser defaults
- * for non-layout tables. */
+/* Restore browser defaults for `border-collapse` and `border-spacing`. */
 .ck-content figure.table:not(.layout-table) > table,
 .ck-content table.table:not(.layout-table) {
 	border-collapse: revert;
 	border-spacing: revert-layer;
 }
 
+
+/* --- `cellspacing` attribute (parked) -------------------------- */
 /*
- * Support for the `cellspacing` attribute.
- * Note: attr() function has limited browser support (not in Firefox).
+ * attr() with a typed value is not yet broadly supported (no Firefox);
+ * keeping this as documentation of the intended approach.
  *
- * .ck-content figure.table:not(.layout-table)>table[cellspacing]:not([cellspacing="0"]) {
+ * .ck-content figure.table:not(.layout-table) > table[cellspacing]:not([cellspacing="0"]) {
  *     border-spacing: attr(cellspacing px);
  * }
  */
 
-/* Borderless or border="0" tables: dotted helper lines, CKE4 style. */
+
+/* --- Borderless / `border="0"` tables -------------------------- */
+
+/* CKE4 showed dotted helper lines on tables without a visible border. */
 .ck-content figure.table:not(.layout-table) > table[style*="border-width:0px"],
 .ck-content figure.table:not(.layout-table) > table:not([border]),
 .ck-content figure.table:not(.layout-table) > table[border="0"] {
@@ -195,21 +255,25 @@
 	}
 }
 
-/* Override CKE5 table helper-line style/color. */
+/* Match the borderless helper lines drawn by CKE5's "show hidden borders" toggle. */
 :where(.ck.ck-editor__editable.ck-table-show-hidden-borders .ck-widget.table) {
 	--ck-table-border-none-helper-line-style: dotted;
 	--ck-table-border-none-helper-line-color: #D3D3E3; /* Same as in CKEditor 4. */
 }
 
-/* Fallback for CKE4 content using inline border:none / border-style:none. */
+/* Fallback for CKE4 content that used inline `border:none` / `border-style:none`
+ * instead of the `border="0"` attribute. */
 .ck-widget.table table[style*="border:none"],
 .ck-widget.table table[style*="border-style:none"] {
 	outline-style: dotted;
 }
 
-/* v48+: `<table border="N">` is upcasted to `tableBorderWidth: N` and re-emitted as
- * inline `style="border-width:Npx"`, with the `border=` attribute stripped. Any non-zero
- * inline border-width should render as solid (matching CKE4). */
+
+/* --- Bordered tables (v48+ inline style form) ------------------ */
+
+/* v48+: `<table border="N">` is upcasted to `tableBorderWidth: N` and re-emitted
+ * as inline `style="border-width:Npx"` with the `border=` attribute stripped.
+ * Any non-zero inline border-width should render solid (matching CKE4). */
 .ck-content figure.table:not(.layout-table) > table[style*="border-width"]:not([style*="border-width:0px"]),
 .ck-content table.table:not(.layout-table)[style*="border-width"]:not([style*="border-width:0px"]) {
 	border-style: solid;
@@ -225,9 +289,4 @@
 			}
 		}
 	}
-}
-
-.ck-content code {
-	padding: initial;
-	background-color: initial;
 }
