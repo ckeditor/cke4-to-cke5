@@ -1,4 +1,4 @@
-# cke4-to-cke5
+# ckeditor5-ckeditor4-preset
 
 A reference setup that demonstrates how to configure **CKEditor 5** so it looks and behaves as close as possible to **CKEditor 4**, for integrators migrating from CKE4 to CKE5.
 
