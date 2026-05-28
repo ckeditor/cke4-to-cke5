@@ -143,7 +143,7 @@
 	border: 0;
 	border-radius: 0;
 	color: inherit;
-	margin: revert-layer;
+	margin: revert;
 	min-width: auto;
 	padding: 0;
 }
@@ -172,7 +172,7 @@
  * cells excluded, then re-add transparent borders for non-cell editables and
  * CKE4-style dotted helper borders for table cells. */
 .ck .ck-editor__nested-editable {
-	border: revert-layer;
+	border: revert;
 }
 
 .ck .ck-editor__nested-editable:not(td, th) {
@@ -196,7 +196,7 @@
 	border-style: revert;
 	border-width: 1px;
 	border-collapse: revert;
-	border-spacing: revert-layer;
+	border-spacing: revert;
 }
 
 /* Same idea for individual cells: drop CKE5's `1px solid #bfbfbf` and padding,
@@ -207,9 +207,9 @@
 	> tbody > tr {
 		> th,
 		> td {
-			border: revert-layer;
+			border: revert;
 			border-width: 1px;
-			padding: revert-layer;
+			padding: revert;
 		}
 	}
 }
@@ -218,7 +218,7 @@
 .ck-content figure.table:not(.layout-table) > table,
 .ck-content table.table:not(.layout-table) {
 	border-collapse: revert;
-	border-spacing: revert-layer;
+	border-spacing: revert;
 }
 
 
